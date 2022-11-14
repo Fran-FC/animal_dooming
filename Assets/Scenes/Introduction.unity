@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
-  Speed: {x: 0, y: 0, z: 2}
+  Speed: {x: 0, y: 0, z: 0}
 --- !u!95 &1465546296
 Animator:
   serializedVersion: 4
