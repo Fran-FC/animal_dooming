@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnClickPlay()
     {
-        SceneManager.LoadScene("Play");
+    //    SceneManager.LoadScene("Play");
     }
 
     public void OnClickLoad()

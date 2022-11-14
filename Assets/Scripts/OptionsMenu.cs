@@ -20,6 +20,6 @@ public class OptionsMenu : MonoBehaviour
 
     public void OnClickBack()
     {
-            SceneManager.LoadScene("Options");
+        SceneManager.LoadScene("Options");
     }
 }
