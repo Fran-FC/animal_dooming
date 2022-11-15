@@ -15,7 +15,7 @@
 /[Mm]emoryCaptures/
 
 # Meta files
-*.meta
+#*.meta
 
 # Recordings can get excessive in size
 /[Rr]ecordings/
