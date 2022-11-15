@@ -168,6 +168,7 @@ namespace Unity.FPS.Gameplay
             // force the crouch state to false when starting
             SetCrouchingState(false, true);
             UpdateCharacterHeight(true);
+
         }
 
         void Update()
