@@ -262,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296839312137202223}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.32, z: 0}
+  m_LocalPosition: {x: 0, y: 5.96, z: 0}
   m_LocalScale: {x: 0.6, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -829,6 +829,7 @@ GameObject:
   - component: {fileID: 1874701629178750784}
   - component: {fileID: 6232804062548798372}
   - component: {fileID: 2553394660209011447}
+  - component: {fileID: 16869737090941392}
   m_Layer: 0
   m_Name: Chy
   m_TagString: Untagged
@@ -888,7 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27364eefd6dd0341ba72a3bfc0d9727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
+  MaxHealth: 2000
   CriticalHealthRatio: 0.3
 --- !u!114 &1147883246010321220
 MonoBehaviour:
@@ -1030,7 +1031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 7084270125831139851}
-  AttackStopDistanceRatio: 0.479
+  AttackStopDistanceRatio: 1
   AttackDamage: 4
   AttackRate: 1
   RandomHitSparks: []
@@ -1137,6 +1138,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &16869737090941392
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4610452766498632395}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4653373859967185821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,7 +1731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5555322687479658759}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 4.1, z: 0}
+  m_LocalPosition: {x: 0, y: 2.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1740,7 +1757,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 1.91
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1814204825054589167
 MonoBehaviour:
@@ -1865,7 +1882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DetectionSourcePoint: {fileID: 979931152327262727}
   DetectionRange: 20
-  AttackRange: 2
+  AttackRange: 5
   KnownTargetTimeout: 12
   Animator: {fileID: 0}
 --- !u!1 &6119836642929815847
@@ -2229,7 +2246,7 @@ Transform:
   m_GameObject: {fileID: 6803598702766478282}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3270524368020675908}
