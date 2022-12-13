@@ -9,6 +9,13 @@ namespace Unity.FPS.Game
         [Tooltip("Represents the affiliation (or team) of the actor. Actors of the same affiliation are friendly to each other")]
         public int Affiliation;
 
+        public enum EnemyType
+        {
+            normal = 0,
+            boss = 1
+        }
+        public EnemyType enemyType;
+
         [Tooltip("Represents point where other actors will aim when they attack this actor")]
         public Transform AimPoint;
 

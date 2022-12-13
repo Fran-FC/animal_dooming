@@ -16,6 +16,16 @@ namespace Unity.FPS.Gameplay
 
         int m_KillTotal;
 
+        public Objective NextObjective;
+
+        public enum EnemyType
+        {
+            normal = 0,
+            boss = 1
+        }
+
+        public EnemyType enemyType;
+
         protected override void Start()
         {
             base.Start();
@@ -33,6 +43,11 @@ namespace Unity.FPS.Gameplay
 
         void OnEnemyKilled(EnemyKillEvent evt)
         {
+
+            if ((int)evt.Enemy.GetComponent<Actor>().enemyType != (int)enemyType) {
+                return;
+            }
+
             if (IsCompleted)
                 return;
 

@@ -24,6 +24,8 @@ namespace Unity.FPS.AI
             }
         }
 
+        public EnemyType enemyType;
+
         [Header("Parameters")]
         [Tooltip("The Y height at which the enemy will be automatically killed (if it falls off of the level)")]
         public float SelfDestructYHeight = -20f;
