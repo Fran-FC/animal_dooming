@@ -40,6 +40,7 @@ namespace Unity.FPS.Game
                     totalDamage *= SensibilityToSelfdamage;
                 }
 
+                Debug.Log("Taking damage " + totalDamage.ToString());
                 // apply the damages
                 Health.TakeDamage(totalDamage, damageSource);
             }

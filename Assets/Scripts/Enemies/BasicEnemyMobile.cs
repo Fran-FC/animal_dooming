@@ -7,6 +7,7 @@ namespace Unity.FPS.AI
     [RequireComponent(typeof(EnemyController))]
     public class BasicEnemyMobile : MonoBehaviour
     {
+        private WeaponController weaponController;
         public enum AIState
         {
             Patrol,
@@ -14,12 +15,14 @@ namespace Unity.FPS.AI
             Attack,
         }
 
+
         public Animator Animator;
 
         [Tooltip("Fraction of the enemy's attack range at which it will stop moving towards target while attacking")]
         [Range(0f, 1f)]
         public float AttackStopDistanceRatio = 0.5f;
-
+        public bool is_distance_attack = false;
+        public GameObject ammo_prefab;
         public float AttackDamage = 40.0f;
         public float AttackRate = 1.0f;
 
@@ -36,6 +39,8 @@ namespace Unity.FPS.AI
         EnemyController m_EnemyController;
         AudioSource m_AudioSource;
 
+        public bool damage_stun = true;
+
         const string k_AnimMoveSpeedParameter = "speed";
         const string k_AnimAttackParameter = "attack";
         // const string k_AnimAlertedParameter = "Alerted";
@@ -43,8 +48,13 @@ namespace Unity.FPS.AI
 
         float m_lastTimeAttacked = float.NegativeInfinity;
 
+
+
         void Start()
         {
+            weaponController = GetComponent<WeaponController>();
+            weaponController.Owner = gameObject;
+
             m_EnemyController = GetComponent<EnemyController>();
             DebugUtility.HandleErrorIfNullGetComponent<EnemyController, BasicEnemyMobile>(m_EnemyController, this,
                 gameObject);
@@ -63,6 +73,7 @@ namespace Unity.FPS.AI
             DebugUtility.HandleErrorIfNullGetComponent<AudioSource, BasicEnemyMobile>(m_AudioSource, this, gameObject);
             m_AudioSource.clip = MovementSound;
             m_AudioSource.Play();
+
         }
 
         void Update()
@@ -80,6 +91,7 @@ namespace Unity.FPS.AI
                 moveSpeed / m_EnemyController.NavMeshAgent.speed);
         }
 
+
         void UpdateAiStateTransitions()
         {
             // Handle transitions 
@@ -92,7 +104,6 @@ namespace Unity.FPS.AI
                         AiState = AIState.Attack;
                         m_EnemyController.SetNavDestination(transform.position);
                     }
-
                     break;
                 case AIState.Attack:
                     // Transition to follow when no longer a target in attack range
@@ -100,7 +111,6 @@ namespace Unity.FPS.AI
                     {
                         AiState = AIState.Follow;
                     }
-
                     break;
             }
         }
@@ -117,6 +127,7 @@ namespace Unity.FPS.AI
                 case AIState.Follow:
                     m_EnemyController.SetNavDestination(m_EnemyController.KnownDetectedTarget.transform.position);
                     m_EnemyController.OrientTowards(m_EnemyController.KnownDetectedTarget.transform.position);
+
                     break;
                 case AIState.Attack:
                     if (Vector3.Distance(m_EnemyController.KnownDetectedTarget.transform.position,
@@ -135,8 +146,7 @@ namespace Unity.FPS.AI
                     
                     if (Time.time - m_lastTimeAttacked >= AttackRate || float.IsNegativeInfinity(m_lastTimeAttacked))
                     {
-                        Debug.Log(Time.time - m_lastTimeAttacked);
-                        m_EnemyController.TryAtack(m_EnemyController.KnownDetectedTarget.transform.position);
+                        m_EnemyController.TryAttack(m_EnemyController.KnownDetectedTarget.transform.position);
                         m_lastTimeAttacked = Time.time;
                     }
                     
@@ -146,13 +156,26 @@ namespace Unity.FPS.AI
 
         void OnAttack()
         {
-            Animator.SetTrigger(k_AnimAttackParameter);
-       
-            GameObject objet = GameObject.FindWithTag("Player");
-            Damageable damageable = objet.GetComponent<Collider>().GetComponent<Damageable>();
+            GameObject obj = GameObject.FindWithTag("Player");
+            Damageable damageable = obj.GetComponent<Collider>().GetComponent<Damageable>();
             if (damageable)
             {
-                damageable.InflictDamage(AttackDamage, false, gameObject);
+                if(!is_distance_attack)
+                {
+                    damageable.InflictDamage(AttackDamage, false, gameObject);
+                    return;
+                }
+
+                Vector3 offset = new Vector3(0f,1f,0f);
+                // throw projectile
+                Vector3 v = ( obj.transform.position - transform.position+offset ).normalized;
+                Ray r = new Ray(transform.position, v);
+                GameObject bullet = Instantiate(ammo_prefab, transform.position, Quaternion.LookRotation(v));
+
+                bullet.GetComponent<ProjectileBase>().Shoot(weaponController);
+                bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 1.5f;
+
+                //Destroy(bullet, 3);
             }
         }
 
@@ -199,7 +222,8 @@ namespace Unity.FPS.AI
                 RandomHitSparks[n].Play();
             }
 
-            Animator.SetTrigger(k_AnimOnDamagedParameter);
+            if(damage_stun) 
+                Animator.SetTrigger(k_AnimOnDamagedParameter);
         }
     }
 }
