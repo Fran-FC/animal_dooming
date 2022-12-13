@@ -9,7 +9,7 @@ namespace Unity.FPS.Gameplay
         public bool MustKillAllEnemies = true;
 
         [Tooltip("If MustKillAllEnemies is false, this is the amount of enemy kills required")]
-        public int KillsToCompleteObjective = 5;
+        public int KillsToCompleteObjective ;
 
         [Tooltip("Start sending notification about remaining enemies when this amount of enemies is left")]
         public int NotificationEnemiesRemainingThreshold = 3;

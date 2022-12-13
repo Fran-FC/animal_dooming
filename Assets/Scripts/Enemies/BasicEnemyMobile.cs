@@ -53,7 +53,8 @@ namespace Unity.FPS.AI
         void Start()
         {
             weaponController = GetComponent<WeaponController>();
-            weaponController.Owner = gameObject;
+            if(weaponController != null)
+                weaponController.Owner = gameObject;
 
             m_EnemyController = GetComponent<EnemyController>();
             DebugUtility.HandleErrorIfNullGetComponent<EnemyController, BasicEnemyMobile>(m_EnemyController, this,

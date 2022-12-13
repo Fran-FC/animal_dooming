@@ -889,7 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27364eefd6dd0341ba72a3bfc0d9727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 2000
+  MaxHealth: 1000
   CriticalHealthRatio: 0.3
 --- !u!114 &1147883246010321220
 MonoBehaviour:
@@ -904,6 +904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Affiliation: 0
+  enemyType: 0
   AimPoint: {fileID: 9182519809396642600}
 --- !u!195 &2215554078379881023
 NavMeshAgent:
@@ -1032,6 +1033,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 7084270125831139851}
   AttackStopDistanceRatio: 1
+  is_distance_attack: 0
+  ammo_prefab: {fileID: 0}
   AttackDamage: 4
   AttackRate: 1
   RandomHitSparks: []

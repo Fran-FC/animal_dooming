@@ -233,6 +233,7 @@ namespace Unity.FPS.Gameplay
             // Make sure that the ground check distance while already in air is very small, to prevent suddenly snapping to ground
             float chosenGroundCheckDistance =
                 IsGrounded ? (m_Controller.skinWidth + GroundCheckDistance) : k_GroundCheckDistanceInAir;
+            Debug.Log(chosenGroundCheckDistance.ToString());
 
             // reset values before the ground check
             IsGrounded = false;
@@ -241,11 +242,13 @@ namespace Unity.FPS.Gameplay
             // only try to detect ground if it's been a short amount of time since last jump; otherwise we may snap to the ground instantly after we try jumping
             if (Time.time >= m_LastTimeJumped + k_JumpGroundingPreventionTime)
             {
+                    Debug.Log("0");
                 // if we're grounded, collect info about the ground normal with a downward capsule cast representing our character capsule
                 if (Physics.CapsuleCast(GetCapsuleBottomHemisphere(), GetCapsuleTopHemisphere(m_Controller.height),
                     m_Controller.radius, Vector3.down, out RaycastHit hit, chosenGroundCheckDistance, GroundCheckLayers,
                     QueryTriggerInteraction.Ignore))
                 {
+                    Debug.Log("1");
                     // storing the upward direction for the surface found
                     m_GroundNormal = hit.normal;
 
@@ -304,6 +307,7 @@ namespace Unity.FPS.Gameplay
                 // handle grounded movement
                 if (IsGrounded)
                 {
+                    Debug.Log("GROUNDED");
                     // calculate the desired velocity from inputs, max speed, and current slope
                     Vector3 targetVelocity = worldspaceMoveInput * MaxSpeedOnGround * speedModifier;
                     // reduce speed if crouching by crouch speed ratio

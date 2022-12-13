@@ -1743,6 +1743,7 @@ GameObject:
   - component: {fileID: 7540180324033469491}
   - component: {fileID: 5425960419043225982}
   - component: {fileID: 30354252}
+  - component: {fileID: 635074331}
   m_Layer: 0
   m_Name: Niko
   m_TagString: Untagged
@@ -1833,8 +1834,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: {fileID: 3048920942345535511}
-  HealthBarImage: {fileID: 0}
-  HealthBarPivot: {fileID: 0}
+  HealthBarImage: {fileID: 2079505326942093579}
+  HealthBarPivot: {fileID: 7072928917568457376}
   HideFullHealthBar: 1
 --- !u!114 &6685456639120868485
 MonoBehaviour:
@@ -1849,7 +1850,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Affiliation: 0
-  AimPoint: {fileID: 0}
+  enemyType: 1
+  AimPoint: {fileID: 4546233807931764402}
 --- !u!195 &5820593001702384858
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1923,9 +1925,11 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   FlashOnHitDuration: 0.5
   DamageTick: {fileID: 0}
-  DeathVfx: {fileID: 0}
-  DeathVfxSpawnPoint: {fileID: 0}
-  LootPrefab: {fileID: 0}
+  DeathVfx: {fileID: 8950624839484268180, guid: 45ce85b82008be84287f2c7e5bf07647,
+    type: 3}
+  DeathVfxSpawnPoint: {fileID: 4546233807931764402}
+  LootPrefab: {fileID: 2529580269645609534, guid: 9973c412032becb4ca116ca08be62edf,
+    type: 3}
   DropRate: 1
   PathReachingRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   AttackRangeColor: {r: 1, g: 0, b: 0, a: 1}
@@ -1948,7 +1952,7 @@ MonoBehaviour:
   ammo_prefab: {fileID: 3659995153115176983, guid: add5040cdb8950d4393e8bb73272a713,
     type: 3}
   AttackDamage: 1
-  AttackRate: 1
+  AttackRate: 2
   RandomHitSparks: []
   OnDetectVfx: []
   OnDetectSfx: {fileID: 0}
@@ -2053,6 +2057,61 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &635074331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4198418444956195663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad90ba0b1477764da373f5ec01a8cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponName: macaco
+  WeaponIcon: {fileID: 0}
+  CrosshairDataDefault:
+    CrosshairSprite: {fileID: 0}
+    CrosshairSize: 0
+    CrosshairColor: {r: 0, g: 0, b: 0, a: 0}
+  CrosshairDataTargetInSight:
+    CrosshairSprite: {fileID: 0}
+    CrosshairSize: 0
+    CrosshairColor: {r: 0, g: 0, b: 0, a: 0}
+  WeaponRoot: {fileID: 0}
+  WeaponMuzzle: {fileID: 0}
+  ShootType: 0
+  ProjectilePrefab: {fileID: 0}
+  DelayBetweenShots: 1
+  BulletSpreadAngle: 0
+  BulletsPerShot: 1
+  RecoilForce: 1
+  AimZoomRatio: 1
+  AimOffset: {x: 0, y: 0, z: 0}
+  AutomaticReload: 1
+  HasPhysicalBullets: 0
+  ClipSize: 30
+  ShellCasing: {fileID: 0}
+  EjectionPort: {fileID: 0}
+  ShellCasingEjectionForce: 2
+  ShellPoolSize: 1
+  AmmoReloadRate: 1
+  AmmoReloadDelay: 2
+  MaxAmmo: 8
+  AutomaticReleaseOnCharged: 0
+  MaxChargeDuration: 2
+  AmmoUsedOnStartCharge: 1
+  AmmoUsageRateWhileCharging: 1
+  WeaponAnimator: {fileID: 0}
+  MuzzleFlashPrefab: {fileID: 0}
+  UnparentMuzzleFlash: 0
+  ShootSfx: {fileID: 0}
+  ChangeWeaponSfx: {fileID: 0}
+  UseContinuousShootSound: 0
+  ContinuousShootStartSfx: {fileID: 0}
+  ContinuousShootLoopSfx: {fileID: 0}
+  ContinuousShootEndSfx: {fileID: 0}
 --- !u!1 &4333524624302212657
 GameObject:
   m_ObjectHideFlags: 0
