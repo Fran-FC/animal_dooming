@@ -16,8 +16,6 @@ namespace Unity.FPS.Gameplay
 
         int m_KillTotal;
 
-        public Objective NextObjective;
-
         public enum EnemyType
         {
             normal = 0,

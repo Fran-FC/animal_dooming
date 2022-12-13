@@ -23,6 +23,8 @@ namespace Unity.FPS.Game
         public static event Action<Objective> OnObjectiveCreated;
         public static event Action<Objective> OnObjectiveCompleted;
 
+        public Objective nextObjective;
+
         protected virtual void Start()
         {
             OnObjectiveCreated?.Invoke(this);
@@ -47,6 +49,9 @@ namespace Unity.FPS.Game
         public void CompleteObjective(string descriptionText, string counterText, string notificationText)
         {
             IsCompleted = true;
+            if (nextObjective != null) {
+                nextObjective.gameObject.SetActive(true);
+            }
 
             ObjectiveUpdateEvent evt = Events.ObjectiveUpdateEvent;
             evt.Objective = this;
