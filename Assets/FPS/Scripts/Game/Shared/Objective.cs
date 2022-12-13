@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Unity.FPS.Game
 {
@@ -25,6 +26,8 @@ namespace Unity.FPS.Game
 
         public Objective nextObjective;
 
+        public UnityEvent onCompletedEvent = new UnityEvent();
+
         protected virtual void Start()
         {
             OnObjectiveCreated?.Invoke(this);
@@ -49,6 +52,7 @@ namespace Unity.FPS.Game
         public void CompleteObjective(string descriptionText, string counterText, string notificationText)
         {
             IsCompleted = true;
+            onCompletedEvent.Invoke();
             if (nextObjective != null) {
                 nextObjective.gameObject.SetActive(true);
             }
