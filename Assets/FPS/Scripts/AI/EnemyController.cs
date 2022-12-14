@@ -348,6 +348,7 @@ namespace Unity.FPS.AI
 
             if(onAttack != null)
             {
+                Debug.Log("Invoking attack");
                 onAttack.Invoke();
             }
 
