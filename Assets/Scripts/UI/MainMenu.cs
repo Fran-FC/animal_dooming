@@ -40,6 +40,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnClickExit()
     {
+        Debug.Log("You have clicked the exit button!");
         Application.Quit();
         //UnityEditor.EditorApplication.isPlaying = false;
     }
