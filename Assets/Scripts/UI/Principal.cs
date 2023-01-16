@@ -40,8 +40,8 @@ public class Principal : MonoBehaviour
                 if(c.b <255)
                     c.b +=1;
 
-                if(Time.time - startTime > TimeOut)
-                    State = SplashStates.Finish;
+                /*if(Time.time - startTime > TimeOut)
+                    State = SplashStates.Finish;*/
                 
                 if(Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Return) ||Input.GetKey(KeyCode.Space))
                     State = SplashStates.Finish;

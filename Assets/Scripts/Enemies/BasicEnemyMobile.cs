@@ -53,6 +53,8 @@ namespace Unity.FPS.AI
         void Start()
         {
             weaponController = GetComponent<WeaponController>();
+            if (weaponController == null)
+                weaponController = GetComponentInChildren<WeaponController>();
             if(weaponController != null)
                 weaponController.Owner = gameObject;
 
