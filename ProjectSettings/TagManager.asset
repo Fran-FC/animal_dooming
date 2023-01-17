@@ -12,7 +12,7 @@ TagManager:
   - Floor
   - Water
   - UI
-  - 
+  - Fog
   - 
   - PostProcessing
   - 
@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: particle
+    uniqueID: 514186765
+    locked: 0
   - name: Background
     uniqueID: 788040023
     locked: 0

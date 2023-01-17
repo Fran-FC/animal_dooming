@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de99b30e1e73fd14e98cc5371da25d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 0.2
+  Radius: 0.44
   Root: {fileID: 106790115311484948}
   Tip: {fileID: 106790115311484948}
   MaxLifeTime: 5
@@ -117,7 +117,7 @@ MonoBehaviour:
   GravityDownAcceleration: 10
   TrajectoryCorrectionDistance: -1
   InheritWeaponVelocity: 0
-  Damage: 250
+  Damage: 50
   AreaOfDamage: {fileID: 1203337828444365110}
   RadiusColor: {r: 0, g: 1, b: 1, a: 0.49803922}
 --- !u!114 &1203337828444365110
@@ -139,20 +139,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.004528313
-      outSlope: -0.004528313
-      tangentMode: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.5208333
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -2.8867912
-      outSlope: -2.8867912
-      tangentMode: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.041666687
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -165,14 +165,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106790115311484953}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3614fdf64d310f44ba678e99290fa20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Damage:
     Min: 80
-    Max: 350
+    Max: 250
   Radius:
     Min: 1
     Max: 1
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106790115311484953}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da2b0de22b1558e4caa11aa3696e87fc, type: 3}
   m_Name: 
