@@ -1945,12 +1945,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 7487299443918789519}
-  AttackStopDistanceRatio: 0.5
+  AttackStopDistanceRatio: 1
   is_distance_attack: 1
   ammo_prefab: {fileID: 3659995153115176983, guid: add5040cdb8950d4393e8bb73272a713,
     type: 3}
   AttackDamage: 1
-  AttackRate: 2
+  AttackRate: 1.5
   RandomHitSparks: []
   OnDetectVfx:
   - {fileID: 8855434715677272938, guid: 1bc9e4f49c67a6a41af3e7cb3d30bb43, type: 3}
@@ -4002,8 +4002,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DetectionSourcePoint: {fileID: 4546233807931764402}
-  DetectionRange: 20
-  AttackRange: 10
+  DetectionRange: 30
+  AttackRange: 15
   KnownTargetTimeout: 12
   Animator: {fileID: 0}
 --- !u!1 &9032719262454251952
