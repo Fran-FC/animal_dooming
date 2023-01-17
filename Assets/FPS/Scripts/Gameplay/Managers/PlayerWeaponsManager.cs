@@ -93,6 +93,24 @@ namespace Unity.FPS.Gameplay
         WeaponSwitchState m_WeaponSwitchState;
         int m_WeaponSwitchNewWeaponIndex;
 
+        
+
+        enum grenadeHandlingType {
+            cooldown,
+            inventory
+        }
+        [Header("Grenade")]
+        [SerializeField]
+        grenadeHandlingType grenadeType = grenadeHandlingType.cooldown;
+        public float grenadeCooldown = 10.0f;
+        public int grenadeAmount = 2;
+        public GameObject grenadeObject;
+        public float throwForce;
+        public float throwUpwardForce;
+        public Transform throwPoint;
+
+        private bool readyToThrow = true;
+
         void Start()
         {
             ActiveWeaponIndex = -1;
@@ -152,6 +170,12 @@ namespace Unity.FPS.Gameplay
                 }
             }
 
+            // grenade handling
+            if (Input.GetKeyDown(KeyCode.G) && readyToThrow && !IsAiming) {
+                ThrowGrenade();
+            }
+
+
             // weapon switch handling
             if (!IsAiming &&
                 (activeWeapon == null || !activeWeapon.IsCharging) &&
@@ -187,6 +211,29 @@ namespace Unity.FPS.Gameplay
                     }
                 }
             }
+        }
+
+
+        void ThrowGrenade() {
+
+            Transform cameraTransform = WeaponCamera.gameObject.transform;
+
+            GameObject grenade = Instantiate(grenadeObject, throwPoint.position, cameraTransform.rotation);
+
+            Rigidbody projectileRb = grenade.GetComponent<Rigidbody>();
+
+            Vector3 force = cameraTransform.forward * throwForce + transform.up * throwUpwardForce + m_PlayerCharacterController.CharacterVelocity * 2;
+
+            projectileRb.AddForce(force);
+
+            readyToThrow = false;
+
+            Invoke(nameof(ResetThrowable), grenadeCooldown);
+
+        }
+
+        void ResetThrowable() {
+            readyToThrow = true;
         }
 
 
